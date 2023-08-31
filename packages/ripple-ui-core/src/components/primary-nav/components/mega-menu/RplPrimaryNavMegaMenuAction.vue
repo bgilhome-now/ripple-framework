@@ -6,6 +6,7 @@ import {
   RplPrimaryNavToggleItemOptions
 } from '../../constants'
 import RplIcon from '../../../icon/RplIcon.vue'
+import RplLink from '../../../link/RplLink.vue'
 import { usePrimaryNavFocus } from '../../../../composables/usePrimaryNavFocus'
 import {
   useRippleEvent,
@@ -113,7 +114,7 @@ const isActive = computed(() => {
 
 <template>
   <component
-    :is="type === 'toggle' ? 'button' : 'RplLink'"
+    :is="type === 'toggle' ? 'button' : RplLink"
     ref="action"
     :class="{
       'rpl-primary-nav__mega-menu-action': true,
