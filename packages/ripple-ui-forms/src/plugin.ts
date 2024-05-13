@@ -17,7 +17,9 @@ import {
   datePicker,
   optionButtons,
   fieldset,
-  hidden
+  hidden,
+  step,
+  steps
 } from './inputs/index'
 
 const rplFormInputs = () => {
@@ -64,6 +66,10 @@ rplFormInputs.library = (node) => {
       return node.define(actions)
     case 'RplFormHidden':
       return node.define(hidden)
+    case 'RplFormStep':
+      return node.define(step)
+    case 'RplFormSteps':
+      return node.define(steps)
   }
 }
 

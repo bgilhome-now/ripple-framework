@@ -231,43 +231,47 @@ const data = reactive({
     return matches && matches.length > 0
   }
 })
+
+
+const stepsSchema = computed(() => props.schema.filter(f => f['$formkit'] === 'RplFormStep'))
+const nonStepsSchema = computed(() => props.schema.filter(f => f['$formkit'] !== 'RplFormStep'))
 </script>
 
 <template>
   <FormKit
-    :id="id"
-    v-slot="{ value }"
-    type="form"
-    :plugins="[rplFormInputs]"
-    form-class="rpl-form"
-    :config="rplFormConfig"
-    :actions="false"
-    :inputErrors="inputErrors"
-    novalidate
-    @submit-invalid="submitInvalidHandler"
-    @submit="submitHandler"
+      :id="id"
+      v-slot="{ value }"
+      type="form"
+      :plugins="[rplFormInputs]"
+      form-class="rpl-form"
+      :config="rplFormConfig"
+      :actions="false"
+      :inputErrors="inputErrors"
+      novalidate
+      @submit-invalid="submitInvalidHandler"
+      @submit="submitHandler"
   >
     <fieldset
-      class="rpl-form__submit-guard"
-      :disabled="submissionState.status === 'submitting'"
+        class="rpl-form__submit-guard"
+        :disabled="submissionState.status === 'submitting'"
     >
       <RplFormAlert
-        v-if="errorSummaryMessages && errorSummaryMessages.length"
-        ref="errorSummaryRef"
-        status="error"
-        title="Form not submitted"
-        :fields="errorSummaryMessages"
-        data-component-type="form-error-summary"
+          v-if="errorSummaryMessages && errorSummaryMessages.length"
+          ref="errorSummaryRef"
+          status="error"
+          title="Form not submitted"
+          :fields="errorSummaryMessages"
+          data-component-type="form-error-summary"
       />
       <RplFormAlert
-        v-else-if="
+          v-else-if="
           submissionState.status === 'error' ||
           submissionState.status === 'success'
         "
-        ref="serverMessageRef"
-        :status="submissionState.status"
-        :title="submissionState.title"
-        data-component-type="form-server-message"
+          ref="serverMessageRef"
+          :status="submissionState.status"
+          :title="submissionState.title"
+          data-component-type="form-server-message"
       >
         <template #default>
           <RplContent :html="submissionState.message" />
@@ -275,10 +279,15 @@ const data = reactive({
       </RplFormAlert>
       <slot name="aboveForm"></slot>
       <slot :value="value">
+        <RplFormSteps
+            v-if="stepsSchema.length > 0"
+            :schema="stepsSchema"
+            :data="data"
+        />
+
         <FormKitSchema
-          v-if="schema"
-          :schema="schema"
-          :data="data"
+            :schema="nonStepsSchema"
+            :data="data"
         ></FormKitSchema>
       </slot>
       <slot name="belowForm" :value="value"></slot>
