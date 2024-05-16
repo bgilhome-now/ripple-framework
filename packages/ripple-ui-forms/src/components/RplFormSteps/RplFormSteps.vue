@@ -1,7 +1,7 @@
 <template>
   <ul class="rpl-form-progress">
     <li
-        v-for="step in schema"
+        v-for="step in steps"
         class="rpl-button"
         :class="currentStep === step.name ? 'rpl-button--filled' : ''"
         @click="currentStep = step.name"
@@ -9,22 +9,13 @@
       {{ step.title }}
     </li>
   </ul>
-
-  <FormKit type="RplFormStep"
-           v-for="step in schema"
-           v-show="currentStep === step.name"
-           :name="step.name"
-           :title="step.title"
-           :schema="step.schema"
-           :data="data"
-  />
 </template>
 
 <script setup lang="ts">
 import {FormKitSchemaCondition, FormKitSchemaNode} from "@formkit/core";
 
 interface Props {
-  schema?: FormKitSchemaCondition | FormKitSchemaNode[] | undefined,
+  steps?: FormKitSchemaCondition | FormKitSchemaNode[] | undefined,
   data?: object
 }
 

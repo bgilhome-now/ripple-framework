@@ -13,7 +13,7 @@ export const steps: FormKitTypeDefinition = {
   schema: createSection('steps', () => ({
     $cmp: 'RplFormSteps',
     props: {
-      schema: '$node.props.schema',
+      steps: '$node.props.schema',
       data: '$node.props.data'
     },
   }))(),
