@@ -24,16 +24,19 @@ interface Props {
   tabs: Array<IRplTab>
   activeTab?: string | undefined
   mode?: (typeof RplTabsModes)[number]
+  variant?: 'default' | 'outlined'
 }
 
 const props = withDefaults(defineProps<Props>(), {
   activeTab: undefined,
-  mode: 'horizontal'
+  mode: 'horizontal',
+  variant: 'default',
 })
 
 const componentClasses = computed(() => [
   'rpl-tabs',
-  props.mode === 'vertical' ? 'rpl-tabs--vertical' : null
+  props.mode === 'vertical' ? 'rpl-tabs--vertical' : null,
+  props.variant !== 'default' ? `rpl-tabs--${props.variant}` : null
 ])
 
 const activeClasses = (key: string) => [

@@ -87,4 +87,53 @@ export const SingleTemplate = (args) => ({
   >
     {SingleTemplate.bind()}
   </Story>
+  <Story
+    name='Outlined'
+    play={a11yStoryCheck}
+    args={{
+      tabs: [
+        {
+          title: 'Default',
+          key: 'default',
+        },
+        {
+          title: 'Extra',
+          key: 'extra'
+        },
+        {
+          title: 'More',
+          key: 'more',
+          icon: 'pin'
+        }
+      ],
+      variant: 'outlined'
+    }}
+  >
+    {SingleTemplate.bind()}
+  </Story>
+  <Story
+    name='Vertical outlined'
+    play={a11yStoryCheck}
+    args={{
+      tabs: [
+        {
+          title: 'Default',
+          key: 'default',
+        },
+        {
+          title: 'Extra',
+          key: 'extra'
+        },
+        {
+          title: 'More',
+          key: 'more',
+          icon: 'pin'
+        }
+      ],
+      mode: 'vertical',
+      variant: 'outlined'
+    }}
+  >
+    {SingleTemplate.bind()}
+  </Story>
 </Canvas>
