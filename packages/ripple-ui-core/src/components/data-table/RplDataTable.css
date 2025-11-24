@@ -3,6 +3,10 @@
 .rpl-data-table {
   --local-table-row-background: rgb(0 0 0 / 4%);
 
+  &__header-button {
+    cursor: pointer;
+  }
+
   .rpl-data-table__details {
     display: none;
 

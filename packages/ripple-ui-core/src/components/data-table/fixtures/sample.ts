@@ -235,6 +235,23 @@ export const RplDataTableObjectKeyColumnHTMLConfig = [
     objectKey: 'type'
   }
 ]
+export const RplDataTableObjectKeyColumnOnClickConfig = [
+  {
+    label: 'Click Me',
+    objectKey: 'name',
+    labelOnClick: () => {
+      alert('Name header clicked')
+    }
+  },
+  {
+    label: 'Duration',
+    objectKey: 'age',
+  },
+  {
+    label: 'Species',
+    objectKey: 'type'
+  }
+]
 
 export const RplDataTableObjects = [
   {

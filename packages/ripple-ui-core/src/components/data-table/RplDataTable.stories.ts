@@ -8,6 +8,7 @@ import {
   RplDataTableComplexItems,
   RplDataTableObjectKeyColumnConfig,
   RplDataTableObjectKeyColumnHTMLConfig,
+  RplDataTableObjectKeyColumnOnClickConfig,
   RplDataTableObjects,
   RplDataTableStructuredColumns,
   RplDataTableStructuredItems,
@@ -101,6 +102,18 @@ export const HtmlHeadings: Story = {
     caption: 'Pets II: The Return',
     footer: 'HTML passed through to headings',
     columns: RplDataTableObjectKeyColumnHTMLConfig,
+    items: RplDataTableExtraComponents,
+    headingType: { horizontal: true, vertical: true },
+    showExtraContent: true,
+    offset: 0
+  }
+}
+
+export const ClickableHeadings: Story = {
+  args: {
+    caption: 'Pets II: The Return',
+    footer: 'onClick passed through to headings',
+    columns: RplDataTableObjectKeyColumnOnClickConfig,
     items: RplDataTableExtraComponents,
     headingType: { horizontal: true, vertical: true },
     showExtraContent: true,

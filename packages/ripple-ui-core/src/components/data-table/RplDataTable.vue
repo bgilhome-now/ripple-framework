@@ -73,13 +73,17 @@ const displayMobileView: ComputedRef<boolean> = computed(() => {
           <tr>
             <template v-for="(column, index) in columns" :key="index">
               <th
-                v-if="column.isLabelHTML"
                 :class="column.classes"
                 scope="col"
-                v-html="column.label"
-              ></th>
-              <th v-else :class="column.classes" scope="col">
-                {{ column.label }}
+              >
+                <button v-if="column.labelOnClick"
+                  class="rpl-data-table__header-button"
+                  @click="column.labelOnClick"
+                  v-html="column.label"
+                />
+                <div v-else
+                  v-html="column.label"
+                />
               </th>
             </template>
             <th v-if="showExtraContent" class="rpl-data-table__actions">

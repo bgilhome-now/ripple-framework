@@ -1,5 +1,6 @@
 export type tableColumnConfig = {
   label: string
+  labelOnClick?: () => void
   objectKey?: string
   classes?: string[]
   component?: string
